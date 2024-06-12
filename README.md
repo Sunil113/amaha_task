@@ -1,5 +1,5 @@
 Overview
-This is a Task Management web application built using Ruby on Rails, with the option to use MongoDB/MySQL/PostgreSQL as the database. The application allows users to authenticate themselves to create tasks, manage task states (Backlog, In-progress, Done), set deadlines for tasks, and receive email alerts if a task is not completed before the deadline.
+This is a Task Management web application built using Ruby on Rails, with the PostgreSQL as the database. The application allows users to authenticate themselves to create tasks, manage task states (Backlog, In-progress, Done), set deadlines for tasks, and receive email alerts if a task is not completed before the deadline.
 
 Features
 User Authentication: Users can sign up, log in, and log out to create and manage tasks.
@@ -15,6 +15,7 @@ Install dependencies: bundle install
 Configure the database: Modify config/database.yml to specify your preferred database (MongoDB/MySQL/PostgreSQL) configuration.
 Run migrations: rails db:migrate
 Start the Rails server: rails server
+
 **Usage**
 Sign up or log in to access the task management dashboard.
 Create new tasks with deadlines and assign them to appropriate states.
