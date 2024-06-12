@@ -1,0 +1,62 @@
+<!-- app/views/tasks/_form.html.erb -->
+<%= form_with(model: task, class: "task-form") do |form| %>
+  <style>
+    .task-form {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+    }
+
+    .actions {
+      margin-top: 20px;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :status %>
+    <%= form.select :status, Task.statuses.keys.map { |s| [s.humanize, s] }, {}, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :deadline %>
+    <%= form.datetime_field :deadline, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create Task", class: "btn btn-primary" %>
+  </div>
+<% end %>

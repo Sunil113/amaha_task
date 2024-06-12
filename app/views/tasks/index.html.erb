@@ -1,0 +1,79 @@
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .actions a {
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+
+  .actions a:hover {
+    background-color: #ddd;
+  }
+
+  .status-backlog {
+    color: #f44336;
+  }
+
+  .status-in-progress {
+    color: #ff9800;
+  }
+
+  .status-done {
+    color: #4caf50;
+  }
+</style>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Deadline</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.title %></td>
+        <td><%= task.description %></td>
+        <td><span class="status-<%= task.status %>"><%= task.status.humanize.capitalize %></span></td>
+        <td><%= task.deadline.strftime("%Y-%m-%d") if task.deadline.present? %></td>
+        <td>
+          <div class="actions">
+            <%= link_to 'Show', task %>
+            <%= link_to 'Edit', edit_task_path(task) %>
+            <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
